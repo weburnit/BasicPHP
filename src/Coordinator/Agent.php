@@ -31,13 +31,27 @@ class Agent
     private $graph;
 
     /**
+     * @var string
+     */
+    private $name;
+
+    /**
      * Agent constructor.
      */
-    public function __construct()
+    public function __construct($name)
     {
         $this->cards            = [];
         $this->stationContracts = [];
         $this->graph            = [];
+        $this->name             = $name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
     }
 
     /**
