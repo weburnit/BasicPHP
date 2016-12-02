@@ -1,0 +1,29 @@
+{
+  "name": "paulaan/transportation",
+  "description": "Demo PHP Application",
+  "require-dev": {
+  },
+  "type": "package",
+  "autoload": {
+    "psr-4": {
+      "Paul\\Transport\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\Tps\\GojekModule\\": "tests/"
+    },
+    "classmap": [
+      "tests/"
+    ]
+  },
+  "authors": [
+    {
+      "name": "Paul Aan",
+      "email": "aan@saloniz.com"
+    }
+  ],
+  "require": {
+    "phpunit/phpunit": "^5.7"
+  }
+}
