@@ -1,10 +1,9 @@
 **Add Agent**
 ```php
-$this->agent = new Agent('PropertyFinder');
-$airport = new Airport('Changi Airport');
-$airport->addVehicle(new Plane('AirBus A320', 'CG-AB320', 250))
-$this->agent->contractWith();
-
+$agent = new Agent('PropertyFinder');
+$changiAiport = new Airport('Changi Airport');
+$changiAiport->addVehicle(new Plane('AirBus A320', 'CG-AB320', 250))
+$this->agent->contractWith($changiAirport);
 ```
 ```php
 $madrid = new Location('Madrid', 12, 13);
@@ -32,10 +31,16 @@ $ticketToNewYork = new BoardingCard(
     'Gate 22, seat 7B. Baggage will we automatically transferred from your last leg'
 );
 
-$this->agent->addCard($ticketToNewYork)->addCard($airTicket)
+$agent->addCard($ticketToNewYork)->addCard($airTicket)
     ->addCard($busTicket)->addCard($trainBoarding);
 
-$boardingCards = $this->agent->resolve();
+$boardingCards = $agent->resolve();
 
-$this->agent->printItinerary();
+$agent->printItinerary();
+```
+*Agent can receive a ticket`(BoardingCar)` request*
+```
+//Agent must contract with Airport or Bus Station first
+$stockholm = new Location('Stockholm', 17, 18);
+$boardingCar = $agent->requestTicket($stockholm);
 ```
