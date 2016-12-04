@@ -38,7 +38,7 @@ $boardingCards = $agent->resolve();
 
 $agent->printItinerary();
 ```
-*Agent can receive a ticket`(BoardingCar)` request*
+*Agent can receive a ticket`(BoardingCard)` request*
 ```php
 //Agent must contract with Airport or Bus Station first
 $stockholm = new Location('Stockholm', 17, 18);
