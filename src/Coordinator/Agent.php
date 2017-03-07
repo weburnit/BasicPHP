@@ -106,8 +106,7 @@ class Agent
      */
     public function addCard(BoardingCard $card)
     {
-        $rootHash = spl_object_hash($card->getVehicle()->getCurrentLocation());
-
+        $rootHash               = spl_object_hash($card->getVehicle()->getCurrentLocation());
         $this->cards[$rootHash] = $card;
         $this->graph[$rootHash] = spl_object_hash($card->getDestination());
 
@@ -119,16 +118,11 @@ class Agent
      */
     public function resolve()
     {
-        $nodes = array_keys($this->graph);
-
-        $edges = array_values($this->graph);
-
-        $this->graph = [];
-
-        $rootHash = current(array_diff($nodes, $edges));
-
+        $nodes        = array_keys($this->graph);
+        $edges        = array_values($this->graph);
+        $this->graph  = [];
+        $rootHash     = current(array_diff($nodes, $edges));
         $resolveCards = [];
-
         for ($index = 0; $index < count($nodes); $index++) {
             $node = $this->cards[$rootHash] ?? null;
             if ($node) {
@@ -136,7 +130,6 @@ class Agent
                 $rootHash       = spl_object_hash($node->getDestination());
             }
         }
-
         $this->cards = $resolveCards;
 
         return $this->cards;
